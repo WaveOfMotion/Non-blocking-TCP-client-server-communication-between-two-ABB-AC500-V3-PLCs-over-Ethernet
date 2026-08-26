@@ -4,7 +4,7 @@ This project demonstrates reliable Ethernet-based TCP/IP socket communication be
 https://www.abb.com/global/en/areas/motion/digital-tools/automation-builder/software-download
 ```
 In the following TCP-Client application, the instructions are given:
-1) build socket server address:
+--> build socket server address:
 ```iecst
 SOCKETADDRESS.sin_family := syssocket.GVL.SOCKET_AF_INET;
 SOCKETADDRESS.sin_port   := syssocket.SysSockHtons(usHost := wPort);
@@ -14,7 +14,7 @@ eInetAddr                := syssocket.SysSockInetAddr(
 );
 ```
 , then success if returns 0.
-2) Create non-blocking socket meaning, if no data is received, socket is kept open:
+--> Create non-blocking socket meaning, if no data is received, socket is kept open:
 ```iecst
 hSocket := syssocket.SysSockCreate(
 	iAddressFamily := syssocket.GVL.SOCKET_AF_INET,
@@ -33,13 +33,13 @@ IF (eCreate = 0) AND (hSocket <> SysSocket.SysSocket_Interfaces.RTS_INVALID_HAND
 	);
 END_IF
 ```
-3) Connect to the socket:
+--> Connect to the socket:
 ```iecst
 eConnect := syssocket.SysSockConnect(hSocket        := hSocket,
 									 pSockAddr      := ADR(SOCKETADDRESS),
 									 diSockAddrSize := SIZEOF(SOCKETADDRESS));
 ```
-4) Send data to server socket:
+--> Send data to server socket:
 ```iecst
 xiSent := syssocket.SysSockSend(
     hSocket       := hSocket,
@@ -51,7 +51,7 @@ xiSent := syssocket.SysSockSend(
 ```
 
 The TCP-Server application follows its given instructions as given shortly-below:
-1) Create listening socket and create it non-blocking:
+--> Create listening socket and create it non-blocking:
 ```iecst
 hListen := syssocket.SysSockCreate(
     iAddressFamily := syssocket.GVL.SOCKET_AF_INET,
@@ -68,7 +68,7 @@ eNonBlocking := SysSocket.SysSockIoctl(
     pdiParameter := ADR(diNonBlocking)
 				);
 ```
-2) Build local address and assign it to socket level:
+--> Build local address and assign it to socket level:
 ```iecst
 wPort := 5000;
 
@@ -82,14 +82,14 @@ eBind := syssocket.SysSockBind(
             diSockAddrSize := SIZEOF(LocalAddress)
 );
 ```
-3) Create listening handle:
+--> Create listening handle:
 ```iecst
 eListen := syssocket.SysSockListen(
             hSocket 		 := hListen,
             diMaxConnections := 1
 		);
 ```
-4) Accept incoming client request
+--> Accept incoming client request
 ```iecst
 hClient := syssocket.SysSockAccept(
     hSocket 		:= hListen,
@@ -98,7 +98,7 @@ hClient := syssocket.SysSockAccept(
     pResult 		:= ADR(eAccept)
 );
 ```
-5) Receive incoming data:
+--> Receive incoming data:
 ```iecst
 xiRecv := syssocket.SysSockRecv(
 	hSocket   	 := hClient,
@@ -108,7 +108,7 @@ xiRecv := syssocket.SysSockRecv(
 	pResult 	 := ADR(eRecv)
 );
 ```
-6) Close accepted client when commanded to:
+--> Close accepted client when commanded to:
 ```iecst
 eCloseClient := syssocket.SysSockClose(
             	hSocket := hClient
@@ -117,11 +117,11 @@ eCloseClient := syssocket.SysSockClose(
 
 # Conclusion
 In the end, both applications together formed a strong-basis of industrial-PLC communication by implementing:
---> connection timeout and polling
---> non-blocking Accept/Send/Receive TCP connection
---> partial-transfer handling
---> automatic reconnect/retry
---> disconnect detection
---> socket lifecycle cleanup on Stop/Reset/Download/Online Change
+1) connection timeout and polling
+2) non-blocking Accept/Send/Receive TCP connection
+3) partial-transfer handling
+4) automatic reconnect/retry
+5) disconnect detection
+6) socket lifecycle cleanup on Stop/Reset/Download/Online Change
 
 I would describe the project as a robust reusable industrial TCP transport layer, but not yet a fully fault-tolerant application protocol: it still lacks features such as Application-level acknowledgments (ACKs), sequence numbers/duplicate detection, heartbeat/keepalive supervision, and guaranteed end-to-end delivery confirmation.
