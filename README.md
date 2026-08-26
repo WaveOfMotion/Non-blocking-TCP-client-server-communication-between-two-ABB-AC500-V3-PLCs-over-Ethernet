@@ -5,8 +5,7 @@ Applications were developped in ABB Automation Builder 2.9, which can be downloa
 ```iecst
 https://www.abb.com/global/en/areas/motion/digital-tools/automation-builder/software-download
 ```
-P.S. 
-For application-development, Codesys PLC level-of-programming in IEC 61131-3 standard (Structured-text and Continuous Function Chart) was used only.
+P.S:	For application-development, Codesys PLC level-of-programming in IEC 61131-3 standard (Structured-text and Continuous Function Chart) was used only.
 
 In the following TCP-Client application, the instructions are given:
 
