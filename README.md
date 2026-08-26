@@ -1,0 +1,2 @@
+# Non-blocking-TCP-client-server-communication-between-two-ABB-AC500-V3-PLCs-over-Ethernet
+This project demonstrates reliable Ethernet-based TCP/IP socket communication between two ABB AC500 V3 PLCs.  One PLC operates as a TCP client and the second PLC operates as a TCP server. The project provides a practical industrial example of direct, non-blocking TCP client/server communication over standard ethernet.
