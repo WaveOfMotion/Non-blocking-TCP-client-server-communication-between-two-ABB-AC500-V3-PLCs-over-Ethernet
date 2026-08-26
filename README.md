@@ -115,7 +115,7 @@ eCloseClient := syssocket.SysSockClose(
             );
 ```
 
-#Conclusion
+# Conclusion
 In the end, both applications together formed a strong-basis of industrial-PLC communication by implementing:
 --> connection timeout and polling
 --> non-blocking Accept/Send/Receive TCP connection
