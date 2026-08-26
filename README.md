@@ -130,6 +130,6 @@ In the end, both applications together formed a strong-basis of industrial-PLC c
 3) partial-transfer handling
 4) automatic reconnect/retry
 5) disconnect detection
-6) socket lifecycle cleanup on Stop/Reset/Download/Online Change [ --> configured under Task Confguration -> Events ]
+6) socket lifecycle cleanup on Stop/Reset/Download/Online Change [ --> configured under Task Configuration -> Events ]
 
 I would describe the project as a robust reusable industrial TCP transport layer, but not yet a fully fault-tolerant application protocol: it still lacks features such as Application-level acknowledgments (ACKs), sequence numbers/duplicate detection, heartbeat/keepalive supervision, and guaranteed end-to-end delivery confirmation.
