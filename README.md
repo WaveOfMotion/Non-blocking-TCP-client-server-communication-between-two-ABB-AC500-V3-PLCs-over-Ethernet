@@ -7,7 +7,7 @@ https://www.abb.com/global/en/areas/motion/digital-tools/automation-builder/soft
 ```
 In the following TCP-Client application, the instructions are given:
 
-## build socket server address
+## Build socket server address
 ```iecst
 SOCKETADDRESS.sin_family := syssocket.GVL.SOCKET_AF_INET;
 SOCKETADDRESS.sin_port   := syssocket.SysSockHtons(usHost := wPort);
