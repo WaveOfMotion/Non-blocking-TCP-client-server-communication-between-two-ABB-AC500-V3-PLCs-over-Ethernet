@@ -7,7 +7,7 @@ https://www.abb.com/global/en/areas/motion/digital-tools/automation-builder/soft
 ```
 In the following TCP-Client application, the instructions are given:
 
-## build socket server address:
+## build socket server address
 ```iecst
 SOCKETADDRESS.sin_family := syssocket.GVL.SOCKET_AF_INET;
 SOCKETADDRESS.sin_port   := syssocket.SysSockHtons(usHost := wPort);
@@ -18,7 +18,8 @@ eInetAddr                := syssocket.SysSockInetAddr(
 ```
 , then success if returns 0.
 
---> Create non-blocking socket meaning, if no data is received, socket is kept open:
+## Create non-blocking socket 
+If no data is received, socket is kept open:
 ```iecst
 hSocket := syssocket.SysSockCreate(
 	iAddressFamily := syssocket.GVL.SOCKET_AF_INET,
@@ -37,13 +38,13 @@ IF (eCreate = 0) AND (hSocket <> SysSocket.SysSocket_Interfaces.RTS_INVALID_HAND
 	);
 END_IF
 ```
---> Connect to the socket:
+## Connect to the socket
 ```iecst
 eConnect := syssocket.SysSockConnect(hSocket        := hSocket,
 									 pSockAddr      := ADR(SOCKETADDRESS),
 									 diSockAddrSize := SIZEOF(SOCKETADDRESS));
 ```
---> Send data to server socket:
+## Send data to server socket
 ```iecst
 xiSent := syssocket.SysSockSend(
     hSocket       := hSocket,
@@ -56,7 +57,7 @@ xiSent := syssocket.SysSockSend(
 
 The TCP-Server application follows its given instructions as given shortly-below:
 
---> Create listening socket and create it non-blocking:
+## Create listening socket and create it non-blocking
 ```iecst
 hListen := syssocket.SysSockCreate(
     iAddressFamily := syssocket.GVL.SOCKET_AF_INET,
@@ -73,7 +74,7 @@ eNonBlocking := SysSocket.SysSockIoctl(
     pdiParameter := ADR(diNonBlocking)
 				);
 ```
---> Build local address and assign it to socket level:
+## Build local address and assign it to socket level
 ```iecst
 wPort := 5000;
 
@@ -87,14 +88,14 @@ eBind := syssocket.SysSockBind(
             diSockAddrSize := SIZEOF(LocalAddress)
 );
 ```
---> Create listening handle:
+## Create listening handle
 ```iecst
 eListen := syssocket.SysSockListen(
             hSocket 		 := hListen,
             diMaxConnections := 1
 		);
 ```
---> Accept incoming client request
+## Accept incoming client request
 ```iecst
 hClient := syssocket.SysSockAccept(
     hSocket 		:= hListen,
@@ -103,7 +104,7 @@ hClient := syssocket.SysSockAccept(
     pResult 		:= ADR(eAccept)
 );
 ```
---> Receive incoming data:
+## Receive incoming data
 ```iecst
 xiRecv := syssocket.SysSockRecv(
 	hSocket   	 := hClient,
@@ -113,7 +114,7 @@ xiRecv := syssocket.SysSockRecv(
 	pResult 	 := ADR(eRecv)
 );
 ```
---> Close accepted client when commanded to:
+## Close accepted client when commanded to
 ```iecst
 eCloseClient := syssocket.SysSockClose(
             	hSocket := hClient
