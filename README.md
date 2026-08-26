@@ -1,7 +1,7 @@
 # Non-blocking-TCP-client-server-communication-between-two-ABB-AC500-V3-PLCs-over-Ethernet
 This project demonstrates reliable Ethernet-based TCP/IP socket communication between two ABB AC500 V3 PLCs.  One PLC operates as a TCP client and the second PLC operates as a TCP server. The project provides a practical industrial example of direct, non-blocking TCP client/server communication over standard ethernet. 
 
-For ABB products, ABB Automation Builder 2.9 can be downloaded for free.
+Applications were developped in ABB Automation Builder 2.9, which can be downloaded for free from the official site given below.
 ```iecst
 https://www.abb.com/global/en/areas/motion/digital-tools/automation-builder/software-download
 ```
