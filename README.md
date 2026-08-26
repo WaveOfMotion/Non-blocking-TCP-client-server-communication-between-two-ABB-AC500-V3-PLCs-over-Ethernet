@@ -6,6 +6,7 @@ https://www.abb.com/global/en/areas/motion/digital-tools/automation-builder/soft
 P.S. For application-development, Codesys PLC level-of-programming in IEC 61131-3 standard (Structured-text and Continuous Function Chart) was used only.
 
 In the following TCP-Client application, the instructions are given:
+
 --> build socket server address:
 ```iecst
 SOCKETADDRESS.sin_family := syssocket.GVL.SOCKET_AF_INET;
