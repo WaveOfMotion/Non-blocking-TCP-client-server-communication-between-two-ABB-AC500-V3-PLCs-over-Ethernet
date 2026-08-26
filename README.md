@@ -7,6 +7,8 @@ https://www.abb.com/global/en/areas/motion/digital-tools/automation-builder/soft
 ```
 In the following TCP-Client application, the instructions are given:
 
+# TCP Client
+
 ## Build socket server address
 ```iecst
 SOCKETADDRESS.sin_family := syssocket.GVL.SOCKET_AF_INET;
@@ -55,7 +57,7 @@ xiSent := syssocket.SysSockSend(
 );
 ```
 
-The TCP-Server application follows its given instructions as given shortly-below:
+# TCP Server
 
 ## Create listening socket and create it non-blocking
 ```iecst
