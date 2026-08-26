@@ -17,6 +17,7 @@ eInetAddr                := syssocket.SysSockInetAddr(
 );
 ```
 , then success if returns 0.
+
 --> Create non-blocking socket meaning, if no data is received, socket is kept open:
 ```iecst
 hSocket := syssocket.SysSockCreate(
