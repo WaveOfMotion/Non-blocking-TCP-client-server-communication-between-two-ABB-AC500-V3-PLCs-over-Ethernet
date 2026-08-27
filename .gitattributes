@@ -1,0 +1,4 @@
+# IEC 61131-3 Structured Text
+*.st  linguist-language=Pascal
+*.scl linguist-language=Pascal
+*.exp linguist-language=Pascal
